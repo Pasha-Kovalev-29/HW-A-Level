@@ -1,0 +1,10 @@
+.btn btn-danger {
+    line-height: 200px;
+    color: #FF0000;
+}
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
