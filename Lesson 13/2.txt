@@ -1,0 +1,20 @@
+
+homework=# select films.id, movie_title, director.name, actors.name from films i
+nner join director using (id) left join actors on (films.id = actors.id);
+ id |                 movie_title                 |            name
+|        name
+----+---------------------------------------------+-----------------------------
++--------------------
+  1 | Pirates of the Caribbean: On Stranger Tides | Quentin Jerome Tarantino
+| Dwayne_Johnson
+  2 | Avengers: Age of Ultron                     | Hayao Miyazak
+| Chris Hemsworth
+  3 | Pirates of the Caribbean: At Worlds End     | Alejandro Gonzalez Inarritu
+| Robert John Downey
+  4 | Avengers: Final                             | Steven Allan Spielberg
+| Akshay Kumar
+  5 | Avengers: Infinity War                      | Peter Jackson
+| Jackie Chan
+(5 rows)
+
+
