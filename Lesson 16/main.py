@@ -59,6 +59,11 @@ class Recruiter(Employee):
 
 
 class Programmer(Employee):
+    # tech_stack=set()
+
+    def __init__(self, name, zp_day, days, tech_stack):
+        super().__init__(name, zp_day, days)
+        self.tech_stack = tech_stack
 
     def work(self):
         return 'I come to the office and start to hiring.'
@@ -66,17 +71,48 @@ class Programmer(Employee):
     def __str__(self):
         return f"{self.__class__.__name__} : {self.name}"
 
+    def __gt__(self, other):
+        return len(self.tech_stack) > len(other.tech_stack)
 
-a = Recruiter("Ivan", 100, 23)
+    def __ge__(self, other):
+        return len(self.tech_stack) >= len(other.tech_stack)
+
+    def __lt__(self, other):
+        return len(self.tech_stack) < len(other.tech_stack)
+
+    def __le__(self, other):
+        return len(self.tech_stack) <= len(other.tech_stack)
+
+    def __eq__(self, other):
+        return len(self.tech_stack) == len(other.tech_stack)
+
+    def __ne__(self, other):
+        return len(self.tech_stack) != len(other.tech_stack)
+
+
+a = Recruiter("Ivan", 200, 23)
 print(a)
 print(a.work())
 print(a.cheak_salary())
 
 print()
 
-b = Programmer("Alex", 200, 23)
+b = Programmer("Alex", 200, 23, {'knowledge of English ', 'Python', 'JS', 'Git', 'html&css'})
 print(b)
 print(b.work())
 print(b.cheak_salary())
+print(b.tech_stack)
 
-c = Programmer("Alex2", 200, 23)
+print(a==b) #сравнение по ЗП за месяц
+
+print()
+
+c = Programmer("Alex2", 200, 23, {'knowledge of English ', 'Python', 'Flask', 'Django'})
+print(c)
+print(c.work())
+print(c.cheak_salary())
+print(c.tech_stack)
+
+print()
+
+print(b>c) #сравнение программистов по скилам
