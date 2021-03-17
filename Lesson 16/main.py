@@ -1,4 +1,5 @@
 import datetime
+import math
 
 
 class Employee:
@@ -52,25 +53,26 @@ class Employee:
 class Recruiter(Employee):
 
     def work(self):
-        return 'I come to the office and start to coding.'
+        return 'I come to the office and start to hiring.'
 
     def __str__(self):
         return f"{self.__class__.__name__} : {self.name}"
 
 
 class Programmer(Employee):
-    # tech_stack=set()
 
     def __init__(self, name, zp_day, days, tech_stack):
+        """added skills"""
         super().__init__(name, zp_day, days)
         self.tech_stack = tech_stack
 
     def work(self):
-        return 'I come to the office and start to hiring.'
+        return 'I come to the office and start to coding.'
 
     def __str__(self):
         return f"{self.__class__.__name__} : {self.name}"
 
+    """comparison by skills """
     def __gt__(self, other):
         return len(self.tech_stack) > len(other.tech_stack)
 
@@ -89,8 +91,16 @@ class Programmer(Employee):
     def __ne__(self, other):
         return len(self.tech_stack) != len(other.tech_stack)
 
+    def __add__(self, other):
+        """combining two programmers """
+        tech_stack = self.tech_stack | other.tech_stack
+        name = self.name + other.name
+        zp_day = self.zp_day + other.zp_day
+        day = math.ceil((self.days + other.days) / 2)
+        return Programmer(name, zp_day, day, tech_stack)
 
-a = Recruiter("Ivan", 200, 23)
+
+a = Recruiter("Ivan", 100, 23)
 print(a)
 print(a.work())
 print(a.cheak_salary())
@@ -103,16 +113,22 @@ print(b.work())
 print(b.cheak_salary())
 print(b.tech_stack)
 
-print(a==b) #сравнение по ЗП за месяц
-
+print()
+print(a == b)  # comparison by salary
 print()
 
-c = Programmer("Alex2", 200, 23, {'knowledge of English ', 'Python', 'Flask', 'Django'})
+c = Programmer("Alesha", 200, 23, {'knowledge of English ', 'Python', 'Flask', 'Django'})
 print(c)
 print(c.work())
 print(c.cheak_salary())
 print(c.tech_stack)
 
 print()
+print(b > c)  # comparison by skills
+print()
 
-print(b>c) #сравнение программистов по скилам
+alfa = b + c #creature alfa-programmer
+print(alfa)
+print(alfa.work())
+print(alfa.cheak_salary())
+print(alfa.tech_stack)
