@@ -73,6 +73,7 @@ class Programmer(Employee):
         return f"{self.__class__.__name__} : {self.name}"
 
     """comparison by skills """
+
     def __gt__(self, other):
         return len(self.tech_stack) > len(other.tech_stack)
 
@@ -127,7 +128,7 @@ print()
 print(b > c)  # comparison by skills
 print()
 
-alfa = b + c #creature alfa-programmer
+alfa = b + c  # creature alfa-programmer
 print(alfa)
 print(alfa.work())
 print(alfa.cheak_salary())
